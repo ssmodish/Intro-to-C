@@ -34,10 +34,12 @@ void string_copy(char *x, char *y)
 char *find_char(char *str, int c)
 {
     while(*str != c && *str != '\0'){
-        printf("Str = %d", *str);
         str++;
     }
-    return *str;
+    if(*str == '\0'){
+        return NULL;
+    }
+    return str;
 }
 
 /*
@@ -52,19 +54,24 @@ char *find_string(char *haystack, char *needle)
 {
     char *start_match = find_char(haystack, *needle);
     char *match_part = start_match;
-    while(*match_part == *needle){
+    while(*needle != '\0'){
         if(*match_part == '\0'){
-            return start_match;
+            return NULL;
         }
         match_part++;
         needle++;
     }
-    return NULL;
+    return start_match;
 }
 
 #ifndef TESTING
 int main(void)
 {
+    char buffer[1024];
+
+    string_copy(buffer, "Hello!");
+    printf("%s", buffer); // Prints "Hello!"
+
     char *hello = "Hello";
     char *world = "World";
 
