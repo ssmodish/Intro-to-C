@@ -33,10 +33,11 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-    while(*str != c){
+    while(*str != c && *str != '\0'){
+        printf("Str = %d", *str);
         str++;
     }
-    return str;
+    return *str;
 }
 
 /*
@@ -51,19 +52,22 @@ char *find_string(char *haystack, char *needle)
 {
     char *start_match = find_char(haystack, *needle);
     char *match_part = start_match;
-    while(match_part == needle){
+    while(*match_part == *needle){
         if(*match_part == '\0'){
             return start_match;
         }
         match_part++;
         needle++;
     }
-    return start_match;
+    return NULL;
 }
 
 #ifndef TESTING
 int main(void)
 {
+    char *hello = "Hello";
+    char *world = "World";
+
     char *found_char = find_char(hello, 'e');
     char *found_string = find_string(world, "or");
 
