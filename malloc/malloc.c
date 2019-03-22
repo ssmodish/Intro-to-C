@@ -12,7 +12,12 @@
 */
 char *string_dup(char *src)
 {
-
+    int string_length = strlen(src) + 1;
+    char *copied_mem = malloc(string_length);
+    for(int i = 0; i < string_length; i++){
+        copied_mem[i] = src[i];
+    }
+    return copied_mem;
 }
 
 /*
@@ -24,7 +29,7 @@ char *string_dup(char *src)
 */
 void mem_copy(void *dest, const void *src, int n)
 {
-
+    
 }
 
 /*
@@ -38,10 +43,10 @@ void mem_copy(void *dest, const void *src, int n)
     
     Do not use the `realloc` function from the standard libary.
 */
-void *resize_memory(void *ptr, int old_size, int new_size)
-{
+// void *resize_memory(void *ptr, int old_size, int new_size)
+// {
 
-}
+// }
 
 #ifndef TESTING
 int main(void)
@@ -59,28 +64,28 @@ int main(void)
 
     printf("Copied array: ");
 
-    for (int i = 0; i < n; i++) {
-        printf("%d ", target[i]);
-    }
+    // for (int i = 0; i < n; i++) {
+    //     printf("%d ", target[i]);
+    // }
 
-    printf("\n");
+    // printf("\n");
 
-    char *url = string_dup("http://lambdaschool.com");
-    char *path = string_dup("/students/");
-    int url_length = string_length(url);
-    int path_length = string_length(path);
+    // char *url = string_dup("http://lambdaschool.com");
+    // char *path = string_dup("/students/");
+    // int url_length = string_length(url);
+    // int path_length = string_length(path);
     
-    int new_length = url_length - 1 + path_length;
-    char *new_url = resize_memory(url, url_length, new_length);
-    char *p = new_url + url_length;
+    // int new_length = url_length - 1 + path_length;
+    // char *new_url = resize_memory(url, url_length, new_length);
+    // char *p = new_url + url_length;
 
-    while (*path != '\0') {
-        *p = *path;
-        p++;
-        path++;
-    }
+    // while (*path != '\0') {
+    //     *p = *path;
+    //     p++;
+    //     path++;
+    // }
 
-    printf("Full path string: %s\n", new_url);
+    // printf("Full path string: %s\n", new_url);
 
     return 0;
 }
